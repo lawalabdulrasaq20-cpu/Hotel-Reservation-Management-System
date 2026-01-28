@@ -271,7 +271,12 @@ For support and questions:
 - All contributors and testers
 
 ---
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/3ff6ce1f-4917-424f-b294-1010dcbe1653" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ba36c8fa-61c9-4a7d-a45d-e970977ada5b" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0624e30e-5a43-4ac0-83ec-16d03ba62563" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/cb8328ca-3e8c-4235-9959-7c215347015a" />
+
 
 **Hotel Reservation System** - Built with ❤️ for the hospitality industry
 
-For more information, visit the admin dashboard or contact the development team.
+For more information, contact http://abdulrasaq.wuaze.com/
