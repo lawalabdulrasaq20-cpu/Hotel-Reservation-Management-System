@@ -1,0 +1,794 @@
+/**
+ * Hotel Reservation System - Responsive Stylesheet
+ * 
+ * This file contains all responsive styles and media queries
+ * for the Hotel Reservation System. Mobile-first approach.
+ * 
+ * @category Hotel_Reservation
+ * @package  Styles
+ * @author   Hotel Reservation System
+ * @license  MIT License
+ */
+
+/* ========================================
+   BREAKPOINTS
+   ======================================== */
+/*
+    Mobile: < 768px
+    Tablet: 768px - 991px
+    Desktop: >= 992px
+    Large Desktop: >= 1200px
+*/
+
+/* ========================================
+   MOBILE-FIRST BASE STYLES
+   ======================================== */
+
+/* Container adjustments */
+.container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+.container-fluid {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* Typography adjustments */
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+
+/* Section padding adjustments */
+.section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section-sm {
+    padding: var(--spacing-xl) 0;
+}
+
+/* Grid adjustments */
+.grid-2,
+.grid-3,
+.grid-4 {
+    grid-template-columns: 1fr;
+}
+
+/* Button adjustments */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    min-height: 44px;
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    min-height: 52px;
+}
+
+/* ========================================
+   NAVBAR RESPONSIVE
+   ======================================== */
+
+/* Mobile navbar */
+.navbar {
+    padding: var(--spacing-sm) 0;
+}
+
+.nav-container {
+    padding: 0 var(--spacing-md);
+}
+
+.nav-logo a span {
+    display: none;
+}
+
+/* Mobile menu toggle */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: none;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    background-color: var(--white);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    box-shadow: var(--shadow-xl);
+}
+
+.mobile-menu-overlay.active .mobile-menu-content {
+    transform: translateX(0);
+}
+
+.mobile-nav-menu {
+    list-style: none;
+    padding: var(--spacing-xl) 0;
+}
+
+.mobile-nav-menu li {
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.mobile-nav-menu a {
+    display: block;
+    padding: var(--spacing-md);
+    color: var(--gray-800);
+    text-decoration: none;
+    transition: background-color var(--transition-base);
+}
+
+.mobile-nav-menu a:hover {
+    background-color: var(--gray-100);
+}
+
+/* ========================================
+   HERO SECTION RESPONSIVE
+   ======================================== */
+
+.hero-section {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    padding: var(--spacing-lg);
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Background video responsive */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+/* Fallback for mobile (autoplay video may not work) */
+@media (max-width: 768px) {
+    .hero-section {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-dark));
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .video-background {
+        display: none;
+    }
+}
+
+/* ========================================
+   ROOMS PAGE RESPONSIVE
+   ======================================== */
+
+/* Room cards grid */
+.rooms-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.room-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.room-card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.room-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.room-card:hover .room-card-image img {
+    transform: scale(1.1);
+}
+
+.room-card-content {
+    padding: var(--spacing-lg);
+}
+
+.room-card-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.room-card-price {
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Search form responsive */
+.search-form {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.search-form .form-row {
+    display: grid;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ========================================
+   RESERVATION PAGE RESPONSIVE
+   ======================================== */
+
+.reservation-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.reservation-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Booking confirmation page */
+.confirmation-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.confirmation-icon {
+    font-size: var(--font-size-5xl);
+    color: var(--success-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ========================================
+   ADMIN PANEL RESPONSIVE
+   ======================================== */
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Admin sidebar */
+.admin-sidebar {
+    display: none;
+    width: 250px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: var(--z-fixed);
+}
+
+.admin-sidebar.active {
+    display: block;
+}
+
+.admin-sidebar-header {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-nav {
+    padding: var(--spacing-md) 0;
+}
+
+.admin-nav-item {
+    display: block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.admin-nav-item:hover,
+.admin-nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Admin main content */
+.admin-main {
+    flex: 1;
+    margin-left: 0;
+    padding: var(--spacing-lg);
+}
+
+/* Admin header */
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+/* Stats cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.stat-card {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.stat-card-icon {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-card-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-card-label {
+    color: var(--gray-600);
+    font-size: var(--font-size-sm);
+}
+
+/* Admin tables */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.admin-table th {
+    background-color: var(--gray-50);
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.admin-table tr:hover {
+    background-color: var(--gray-50);
+}
+
+/* Admin forms */
+.admin-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   FOOTER RESPONSIVE
+   ======================================== */
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-3xl) 0 var(--spacing-lg);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h3 {
+    color: var(--white);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-about p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--spacing-lg);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    color: var(--white);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-links ul,
+.footer-services ul {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-services li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a,
+.footer-services a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.footer-links a:hover,
+.footer-services a:hover {
+    color: var(--primary-color);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    margin-top: 2px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+}
+
+.footer-bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-base);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--primary-color);
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   TABLET STYLES (768px - 991px)
+   ======================================== */
+@media (min-width: 768px) {
+    /* Container adjustments */
+    .container {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+    
+    /* Typography adjustments */
+    h1 { font-size: var(--font-size-4xl); }
+    h2 { font-size: var(--font-size-3xl); }
+    h3 { font-size: var(--font-size-2xl); }
+    
+    /* Grid adjustments */
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    
+    /* Navigation */
+    .nav-logo a span {
+        display: inline;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .nav-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Rooms grid */
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Room card image */
+    .room-card-image {
+        height: 250px;
+    }
+    
+    /* Search form */
+    .search-form .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer */
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    /* Admin sidebar */
+    .admin-sidebar {
+        display: block;
+    }
+    
+    .admin-main {
+        margin-left: 250px;
+    }
+    
+    .mobile-sidebar-toggle {
+        display: none;
+    }
+}
+
+/* ========================================
+   DESKTOP STYLES (992px+)
+   ======================================== */
+@media (min-width: 992px) {
+    /* Typography adjustments */
+    h1 { font-size: var(--font-size-5xl); }
+    h2 { font-size: var(--font-size-4xl); }
+    h3 { font-size: var(--font-size-3xl); }
+    
+    /* Section padding */
+    .section {
+        padding: var(--spacing-4xl) 0;
+    }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-2xl);
+    }
+    
+    /* Rooms grid */
+    .rooms-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Room card image */
+    .room-card-image {
+        height: 300px;
+    }
+    
+    /* Search form */
+    .search-form .form-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Footer */
+    .footer-top {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   LARGE DESKTOP STYLES (1200px+)
+   ======================================== */
+@media (min-width: 1200px) {
+    /* Container max width */
+    .container {
+        max-width: 1200px;
+    }
+    
+    /* Rooms grid */
+    .rooms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+    
+    /* Room card image */
+    .room-card-image {
+        height: 350px;
+    }
+}
+
+/* ========================================
+   EXTRA LARGE SCREENS (1400px+)
+   ======================================== */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   SPECIAL CASES
+   ======================================== */
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 500px;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize images for retina displays */
+    .room-card-image img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .footer,
+    .btn,
+    .back-to-top {
+        display: none !important;
+    }
+    
+    .hero-section {
+        height: auto;
+        min-height: auto;
+        background: none !important;
+    }
+    
+    .video-background,
+    .video-overlay {
+        display: none !important;
+    }
+}
